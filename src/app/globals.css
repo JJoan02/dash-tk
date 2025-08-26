@@ -1,0 +1,66 @@
+/* Colores TK-UI */
+:root {
+  --tk-primary-cyan: #00bcd4;
+  --tk-dark-bg: #12161c;
+  --tk-card-bg: #1b1f26;
+  --tk-text-white: #f8f9fa;
+  --tk-secondary-text: #adb5bd;
+  --tk-border-color: #495057;
+}
+
+/* Body */
+body {
+  background-color: var(--tk-dark-bg);
+  color: var(--tk-text-white);
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Glow effect */
+.glow {
+  text-shadow: 0 0 8px var(--tk-primary-cyan), 0 0 16px var(--tk-primary-cyan);
+}
+
+/* Cards */
+.card-tk {
+  background-color: var(--tk-card-bg);
+  border: 1px solid var(--tk-border-color);
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+.card-tk:hover {
+  box-shadow: 0 0 20px var(--tk-primary-cyan);
+  transform: translateY(-5px);
+}
+
+/* Botones */
+.btn-tk-primary {
+  background-color: var(--tk-primary-cyan);
+  border-color: var(--tk-primary-cyan);
+  color: var(--tk-dark-bg);
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.btn-tk-primary:hover {
+  background-color: #00a0b5;
+  border-color: #00a0b5;
+  transform: scale(1.05);
+}
+.btn-outline-secondary {
+  border: 2px solid var(--tk-secondary-text);
+  color: var(--tk-secondary-text);
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.btn-outline-secondary:hover {
+  border-color: var(--tk-primary-cyan);
+  color: var(--tk-primary-cyan);
+  transform: scale(1.05);
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
