@@ -48,8 +48,12 @@ export default function RegisterPage() {
                 router.push('/dashboard');
             }, 2000);
 
-        } catch (err: any) {
-            setError(err.message);
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError('Ocurrió un error inesperado.');
+            }
         }
     };
 

@@ -17,13 +17,32 @@ export default function LoginPage() {
         e.preventDefault();
         setError('');
 
-        // For now, we will just use the mock login for the UI to work.
-        // The backend logic for login would be implemented here.
-        console.log(`TODO: Implement real login fetch to http://206.183.129.67:4000/api/v1/auth/login`);
-        
-        // Simulate successful login and update UI
-        login(email, email.split('@')[0]);
-        router.push('/dashboard');
+        try {
+            const response = await fetch(`http://206.183.129.67:4000/api/v1/auth/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || 'Error al iniciar sesión.');
+            }
+
+            // Use the user data from the backend response to log in
+            login(data.user.email, data.user.name);
+            router.push('/dashboard');
+
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError('Ocurrió un error inesperado.');
+            }
+        }
     };
 
     return (
