@@ -18,7 +18,7 @@ export default function LoginPage() {
         setError('');
 
         try {
-            const response = await fetch(`http://206.183.129.67:4000/api/v1/auth/login`, {
+            const response = await fetch(`https://api.tk-host.fun/api/v1/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

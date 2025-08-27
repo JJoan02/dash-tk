@@ -82,3 +82,21 @@
     border-top: 1px solid var(--tk-border);
     margin-top: 2rem;
 }
+
+@media (max-width: 768px) {
+    .section {
+        padding: 3rem 1rem;
+    }
+
+    .hero {
+        padding: 4rem 1rem;
+    }
+
+    .heroTitle {
+        font-size: 3rem;
+    }
+
+    .sectionTitle {
+        font-size: 2rem;
+    }
+}

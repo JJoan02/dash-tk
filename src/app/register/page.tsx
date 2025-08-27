@@ -26,7 +26,7 @@ export default function RegisterPage() {
         }
 
         try {
-            const response = await fetch(`http://206.183.129.67:4000/api/v1/auth/register`, {
+            const response = await fetch(`https://api.tk-host.fun/api/v1/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

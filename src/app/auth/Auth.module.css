@@ -68,3 +68,13 @@
 .switchLink a:hover {
     text-decoration: underline;
 }
+
+@media (max-width: 480px) {
+    .authCard {
+        padding: 1.5rem;
+    }
+
+    .authTitle {
+        font-size: 1.8rem;
+    }
+}
