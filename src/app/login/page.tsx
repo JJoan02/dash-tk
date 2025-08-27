@@ -33,7 +33,7 @@ export default function LoginPage() {
             }
 
             // Use the user data from the backend response to log in
-            login(data.user.email, data.user.name);
+            login(data.user.email, data.user.username);
             router.push('/dashboard');
 
         } catch (err: unknown) {
