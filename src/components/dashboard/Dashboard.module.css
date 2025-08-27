@@ -1,0 +1,118 @@
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto 1fr;
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.statCard {
+    grid-column: span 1;
+}
+
+.activityChart {
+    grid-column: span 3;
+    grid-row: span 1;
+    min-height: 400px;
+}
+
+.quickActions {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.card {
+    background-color: var(--tk-card-bg);
+    border: 1px solid var(--tk-border-color);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
+  transform: translateY(-5px);
+}
+
+.statCardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.statCardHeader h3 {
+    font-size: 1rem;
+    color: var(--tk-secondary-text);
+    margin: 0;
+}
+
+.statIcon {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: rgba(0, 188, 212, 0.1);
+    color: var(--tk-primary-cyan);
+}
+
+.statValue {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 1rem 0;
+    color: var(--tk-text-white);
+}
+
+.statGrowth {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.statGrowth span {
+    margin-left: 0.5rem;
+}
+
+.positive {
+    color: #28a745;
+}
+
+.chartContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    color: var(--tk-secondary-text);
+}
+
+.quickActionBtn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--tk-dark-bg);
+    border: 1px solid var(--tk-border-color);
+    color: var(--tk-text-white);
+    border-radius: 0.5rem;
+    text-align: left;
+    transition: all 0.2s ease-in-out;
+}
+
+.quickActionBtn:hover {
+    background-color: var(--tk-primary-cyan);
+    color: var(--tk-dark-bg);
+    border-color: var(--tk-primary-cyan);
+}
+
+.quickActionBtn svg {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}

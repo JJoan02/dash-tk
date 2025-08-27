@@ -3,6 +3,10 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Link from 'next/link';
+import { ThemeProvider } from '../context/ThemeContext';
+import { AuthProvider } from '../context/AuthContext'; // Import AuthProvider
+import NavbarActions from '../components/layout/NavbarActions'; // Import the new component
+import { FaTachometerAlt, FaServer, FaRobot, FaShoppingCart, FaCoins, FaUserCircle } from 'react-icons/fa';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,36 +21,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='es'>
-      <body className={`${inter.className} bg-dark text-white`}>
-        <nav className='navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary'>
-          <div className='container-fluid'>
-            <Link className='navbar-brand' href='/'>TK-HOST</Link>
-            <button
-              className='navbar-toggler'
-              type='button'
-              data-bs-toggle='collapse'
-              data-bs-target='#navbarNav'
-              aria-controls='navbarNav'
-              aria-expanded='false'
-              aria-label='Toggle navigation'
-            >
-              <span className='navbar-toggler-icon'></span>
-            </button>
-            <div className='collapse navbar-collapse' id='navbarNav'>
-              <ul className='navbar-nav ms-auto'>
-                <li className='nav-item'>
-                  <Link className='nav-link' href='/dashboard'>Dashboard</Link>
-                </li>
-                <li className='nav-item'>
-                  <Link className='nav-link' href='/admin'>Admin</Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-        {children}
-      </body>
+    <html lang='es' data-scroll-behavior="smooth">
+      <AuthProvider> { /* Wrap with AuthProvider */ }
+        <ThemeProvider>
+          <body className={inter.className}>
+            <nav className='main-nav'>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+                <Link href="/" className='nav-brand-container'>
+                  <span>TK-HOST</span>
+                  <span className='premium-tag'>Premium</span>
+                </Link>
+                <ul className='nav-links'>
+                  <li className='nav-link-item'><Link href="/dashboard"><FaTachometerAlt /> Dashboard</Link></li>
+                  <li className='nav-link-item'><Link href="/servers"><FaServer /> Servidores</Link></li>
+                  <li className='nav-link-item'><Link href="/bots"><FaRobot /> Bots</Link></li>
+                  <li className='nav-link-item'><Link href="/store"><FaShoppingCart /> Tienda</Link></li>
+                  <li className='nav-link-item'><Link href="/coins"><FaCoins /> TK-Coins</Link></li>
+                  <li className='nav-link-item'><Link href="/profile"><FaUserCircle /> Perfil</Link></li>
+                </ul>
+              </div>
+              <NavbarActions /> { /* Use the dynamic component */ }
+            </nav>
+            <main style={{ paddingTop: '80px' }}>
+              {children}
+            </main>
+          </body>
+        </ThemeProvider>
+      </AuthProvider>
     </html>
   );
 }

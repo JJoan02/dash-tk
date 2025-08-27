@@ -1,61 +1,206 @@
-/* Colores TK-UI */
+/* 1. Default Theme (Dark) & Core Variables */
 :root {
-  --tk-primary-cyan: #00bcd4;
-  --tk-dark-bg: #12161c;
+  --tk-background-image: none;
+
+  /* Themeable Colors */
+  --tk-bg: #12161c;
   --tk-card-bg: #1b1f26;
-  --tk-text-white: #f8f9fa;
-  --tk-secondary-text: #adb5bd;
-  --tk-border-color: #495057;
+  --tk-card-bg-glass: rgba(27, 31, 38, 0.75);
+  --tk-primary: #00bcd4; /* Cyan */
+  --tk-primary-contrast: #12161c; /* Text on primary buttons */
+  --tk-text-primary: #f8f9fa;
+  --tk-text-secondary: #adb5bd;
+  --tk-border: #495057;
+  --tk-success: #28a745;
+  --tk-danger: #dc3545;
 }
 
-/* Body */
+/* 2. Light Theme */
+.theme-light {
+  --tk-bg: #f8f9fa;
+  --tk-card-bg: #ffffff;
+  --tk-card-bg-glass: rgba(255, 255, 255, 0.7);
+  --tk-primary: #007bff; /* Blue */
+  --tk-primary-contrast: #ffffff;
+  --tk-text-primary: #212529;
+  --tk-text-secondary: #6c757d;
+  --tk-border: #dee2e6;
+}
+
+/* 3. Synthwave Theme */
+.theme-synthwave {
+  --tk-bg: #261B3E;
+  --tk-card-bg: #3D2C5E;
+  --tk-card-bg-glass: rgba(61, 44, 94, 0.75);
+  --tk-primary: #F92672; /* Pink */
+  --tk-primary-contrast: #ffffff;
+  --tk-text-primary: #F4F4F4;
+  --tk-text-secondary: #A599B5;
+  --tk-border: #7A63A0;
+  --tk-success: #A6E22E; /* Lime Green */
+}
+
+/* 4. Dracula Theme */
+.theme-dracula {
+  --tk-bg: #282a36;
+  --tk-card-bg: #44475a;
+  --tk-card-bg-glass: rgba(68, 71, 90, 0.75);
+  --tk-primary: #bd93f9; /* Purple */
+  --tk-primary-contrast: #282a36;
+  --tk-text-primary: #f8f8f2;
+  --tk-text-secondary: #6272a4;
+  --tk-border: #6272a4;
+  --tk-success: #50fa7b; /* Green */
+}
+
+/* 5. Event Themes */
+.theme-halloween {
+  --tk-bg: #0d0d0d;
+  --tk-card-bg: #1a1a1a;
+  --tk-card-bg-glass: rgba(26, 26, 26, 0.75);
+  --tk-primary: #ff7518; /* Pumpkin Orange */
+  --tk-primary-contrast: #0d0d0d;
+  --tk-text-primary: #e6e6e6;
+  --tk-text-secondary: #8c8c8c;
+  --tk-border: #4d4d4d;
+  --tk-success: #9acd32; /* Witch Green */
+}
+
+.theme-christmas {
+  --tk-bg: #f2f2f2;
+  --tk-card-bg: #ffffff;
+  --tk-card-bg-glass: rgba(255, 255, 255, 0.7);
+  --tk-primary: #c82333; /* Festive Red */
+  --tk-primary-contrast: #ffffff;
+  --tk-text-primary: #173d17; /* Pine Green */
+  --tk-text-secondary: #5a7d5a;
+  --tk-border: #d4d4d4;
+  --tk-success: #ffd700; /* Gold */
+}
+
+.theme-new-year {
+  --tk-bg: #121212;
+  --tk-card-bg: #1e1e1e;
+  --tk-card-bg-glass: rgba(30, 30, 30, 0.75);
+  --tk-primary: #ffd700; /* Gold */
+  --tk-primary-contrast: #121212;
+  --tk-text-primary: #e0e0e0;
+  --tk-text-secondary: #b0b0b0;
+  --tk-border: #444444;
+  --tk-success: #c0c0c0; /* Silver */
+}
+
+.theme-valentine {
+  --tk-bg: #fff0f5; /* Lavender Blush */
+  --tk-card-bg: #ffffff;
+  --tk-card-bg-glass: rgba(255, 255, 255, 0.7);
+  --tk-primary: #ff69b4; /* Hot Pink */
+  --tk-primary-contrast: #ffffff;
+  --tk-text-primary: #6d2e46;
+  --tk-text-secondary: #8b576e;
+  --tk-border: #f5d6e6;
+}
+
+.theme-joantk {
+  --tk-bg: #1a1a1a;
+  --tk-card-bg: #2a2a2a;
+  --tk-card-bg-glass: rgba(42, 42, 42, 0.75);
+  --tk-primary: #daa520; /* Goldenrod */
+  --tk-primary-contrast: #1a1a1a;
+  --tk-text-primary: #f0f0f0;
+  --tk-text-secondary: #a0a0a0;
+  --tk-border: #505050;
+}
+
+/* 6. Universal Themes */
+.theme-ocean {
+  --tk-bg: #0f2a3f;
+  --tk-card-bg: #1c3d5a;
+  --tk-card-bg-glass: rgba(28, 61, 90, 0.75);
+  --tk-primary: #00a8cc; /* Teal */
+  --tk-primary-contrast: #ffffff;
+  --tk-text-primary: #e1f5fe;
+  --tk-text-secondary: #b3e5fc;
+  --tk-border: #3c5d7a;
+}
+
+.theme-forest {
+  --tk-bg: #2a3d2a;
+  --tk-card-bg: #3d5a3d;
+  --tk-card-bg-glass: rgba(61, 90, 61, 0.75);
+  --tk-primary: #ffc107; /* Amber/Sunlight */
+  --tk-primary-contrast: #2a3d2a;
+  --tk-text-primary: #f0fff0;
+  --tk-text-secondary: #c0e0c0;
+  --tk-border: #5a7d5a;
+}
+
+.theme-sakura {
+  --tk-bg: #332222;
+  --tk-card-bg: #443333;
+  --tk-card-bg-glass: rgba(68, 51, 51, 0.75);
+  --tk-primary: #ffb7c5; /* Light Pink */
+  --tk-primary-contrast: #332222;
+  --tk-text-primary: #fff0f0;
+  --tk-text-secondary: #e0d0d0;
+  --tk-border: #665555;
+}
+
+/* Core Body Styles */
 body {
-  background-color: var(--tk-dark-bg);
-  color: var(--tk-text-white);
+  background-image: var(--tk-background-image);
+  background-color: var(--tk-bg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--tk-text-primary);
   font-family: 'Inter', sans-serif;
   scroll-behavior: smooth;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* Glow effect */
 .glow {
-  text-shadow: 0 0 8px var(--tk-primary-cyan), 0 0 16px var(--tk-primary-cyan);
+  text-shadow: 0 0 8px var(--tk-primary), 0 0 16px var(--tk-primary);
 }
 
-/* Cards */
+/* Cards - Now uses theme variables */
 .card-tk {
-  background-color: var(--tk-card-bg);
-  border: 1px solid var(--tk-border-color);
+  background-color: var(--tk-card-bg-glass);
+  border: 1px solid var(--tk-border);
   border-radius: 0.75rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
   transition: all 0.3s ease;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 .card-tk:hover {
-  box-shadow: 0 0 20px var(--tk-primary-cyan);
+  box-shadow: 0 0 20px var(--tk-primary);
   transform: translateY(-5px);
 }
 
-/* Botones */
+/* Buttons - Now uses theme variables */
 .btn-tk-primary {
-  background-color: var(--tk-primary-cyan);
-  border-color: var(--tk-primary-cyan);
-  color: var(--tk-dark-bg);
+  background-color: var(--tk-primary);
+  border-color: var(--tk-primary);
+  color: var(--tk-primary-contrast);
   font-weight: bold;
   transition: all 0.3s ease;
 }
 .btn-tk-primary:hover {
-  background-color: #00a0b5;
-  border-color: #00a0b5;
+  filter: brightness(1.1);
   transform: scale(1.05);
 }
+
 .btn-outline-secondary {
-  border: 2px solid var(--tk-secondary-text);
-  color: var(--tk-secondary-text);
+  border: 2px solid var(--tk-text-secondary);
+  color: var(--tk-text-secondary);
   font-weight: bold;
   transition: all 0.3s ease;
 }
 .btn-outline-secondary:hover {
-  border-color: var(--tk-primary-cyan);
-  color: var(--tk-primary-cyan);
+  border-color: var(--tk-primary);
+  color: var(--tk-primary);
   transform: scale(1.05);
 }
 
@@ -63,4 +208,66 @@ body {
 .hero {
   position: relative;
   overflow: hidden;
+}
+
+/* Navbar Styles */
+.main-nav {
+  background-color: var(--tk-bg);
+  border-bottom: 1px solid var(--tk-border);
+  padding: 0.75rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--tk-text-primary);
+  text-decoration: none;
+}
+
+.premium-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--tk-primary);
+  color: var(--tk-primary-contrast);
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link-item a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--tk-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-link-item a:hover, .nav-link-item a.active {
+  color: var(--tk-text-primary);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
 }

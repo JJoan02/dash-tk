@@ -1,0 +1,31 @@
+.dashboardContainer {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.welcomeTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.welcomeSubtitle {
+    font-size: 1.2rem;
+    color: var(--tk-text-secondary);
+    margin-bottom: 3rem;
+}
+
+.actionCard {
+    display: block;
+    padding: 3rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--tk-text-primary);
+}
+
+.actionCard h2 {
+    font-size: 2rem;
+    color: var(--tk-primary);
+    margin-bottom: 1rem;
+}
