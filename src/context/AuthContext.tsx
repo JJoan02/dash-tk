@@ -2,16 +2,17 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-// A mock user object
+// The user object now includes a role
 interface User {
     email: string;
     name: string;
+    role: 'admin' | 'user';
 }
 
 interface AuthContextType {
     user: User | null;
     isAuthenticated: boolean;
-    login: (email: string, name?: string) => void;
+    login: (email: string, name: string, role: 'admin' | 'user') => void;
     logout: () => void;
 }
 
@@ -21,15 +22,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
-        // Check for a logged-in user in localStorage on initial load
         const storedUser = localStorage.getItem('tk-user');
         if (storedUser) {
             setUser(JSON.parse(storedUser));
         }
     }, []);
 
-    const login = (email: string, name: string = 'Usuario TK') => {
-        const newUser = { email, name };
+    const login = (email: string, name: string, role: 'admin' | 'user' = 'user') => {
+        const newUser = { email, name, role };
         localStorage.setItem('tk-user', JSON.stringify(newUser));
         setUser(newUser);
     };

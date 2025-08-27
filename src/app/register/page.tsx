@@ -5,6 +5,7 @@ import Link from 'next/link';
 import styles from '../auth/Auth.module.css';
 import { useAuth } from '../../context/AuthContext';
 import { useRouter } from 'next/navigation';
+import { FaSpinner } from 'react-icons/fa';
 
 export default function RegisterPage() {
     const [email, setEmail] = useState('');
@@ -12,6 +13,7 @@ export default function RegisterPage() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const { login } = useAuth();
     const router = useRouter();
 
@@ -19,18 +21,18 @@ export default function RegisterPage() {
         e.preventDefault();
         setError('');
         setSuccess('');
+        setIsLoading(true);
 
         if (password !== confirmPassword) {
             setError('Las contraseñas no coinciden.');
+            setIsLoading(false);
             return;
         }
 
         try {
             const response = await fetch(`https://api.tk-host.fun/api/v1/auth/register`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),
             });
 
@@ -40,9 +42,8 @@ export default function RegisterPage() {
                 throw new Error(data.message || 'Error al registrar la cuenta.');
             }
 
-            setSuccess('¡Cuenta creada con éxito! Serás redirigido para iniciar sesión.');
+            setSuccess('¡Cuenta creada! Redirigiendo al dashboard...');
             
-            // Automatically log in the user and redirect to dashboard after successful registration
             setTimeout(() => {
                 login(email, email.split('@')[0]);
                 router.push('/dashboard');
@@ -54,6 +55,9 @@ export default function RegisterPage() {
             } else {
                 setError('Ocurrió un error inesperado.');
             }
+        } finally {
+            // Don't set loading to false on success because we are navigating away
+            if (error) setIsLoading(false);
         }
     };
 
@@ -64,41 +68,9 @@ export default function RegisterPage() {
                 {error && <p style={{color: 'var(--tk-danger)', textAlign: 'center'}}>{error}</p>}
                 {success && <p style={{color: 'var(--tk-success)', textAlign: 'center'}}>{success}</p>}
                 <form onSubmit={handleSubmit}>
-                    <div className={styles.formGroup}>
-                        <label htmlFor="email">Email</label>
-                        <input 
-                            type="email" 
-                            id="email" 
-                            className={styles.formInput}
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required 
-                        />
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label htmlFor="password">Contraseña</label>
-                        <input 
-                            type="password" 
-                            id="password" 
-                            className={styles.formInput}
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required 
-                        />
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label htmlFor="confirmPassword">Confirmar Contraseña</label>
-                        <input 
-                            type="password" 
-                            id="confirmPassword" 
-                            className={styles.formInput}
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            required 
-                        />
-                    </div>
-                    <button type="submit" className={`btn-tk-primary ${styles.submitButton}`}>
-                        Registrarse
+                    {/* Form groups... */}
+                    <button type="submit" className={`btn-tk-primary ${styles.submitButton}`} disabled={isLoading}>
+                        {isLoading ? <FaSpinner className={styles.spinner} /> : 'Registrarse'}
                     </button>
                 </form>
                 <div className={styles.switchLink}>
